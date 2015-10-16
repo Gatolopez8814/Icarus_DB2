@@ -1,6 +1,6 @@
 package principal;
 
-import controlador.ConexionMySql;
+import modelo.ConexionMySql;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
