@@ -19,7 +19,8 @@ public class Pruebas {
             @Override
             public void run() {
                 Pruebas pruebas = new Pruebas();
-                pruebas.iniciarPrueba();
+                //pruebas.iniciarPrueba();
+                pruebas.prueba2();
             }
         });
     }
@@ -33,6 +34,15 @@ public class Pruebas {
         }else{
             System.out.println("ERROR la conexion No pudo realizarse ");
         }            
+    }
+    private void prueba2(){
+        ConexionMySql coneccion= ConexionMySql.obtenerInstancia();
+        boolean bandera= coneccion.noReturnStatementMySQL("root","root","","INSERT INTO `test`.`t1`(`num`)VALUES(1);");
+        if(bandera){
+            System.out.println("La conexion es posible");
+        }else{
+            System.out.println("ERROR la conexion No pudo realizarse ");
+        }  
     }
     
 }
