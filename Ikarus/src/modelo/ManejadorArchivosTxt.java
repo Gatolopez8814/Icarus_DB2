@@ -9,6 +9,18 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class ManejadorArchivosTxt {
+    
+    private static ManejadorArchivosTxt instancia = null;
+
+    private ManejadorArchivosTxt() {
+    }
+
+    public static ManejadorArchivosTxt obtenerInstancia() {
+        if (instancia == null) {
+            instancia = new ManejadorArchivosTxt();
+        }
+        return instancia;
+    }
 
     public ArrayList<String> leer(String nombreArchivo) {//"src/vocabulario.txt"
         File archivo = null;
