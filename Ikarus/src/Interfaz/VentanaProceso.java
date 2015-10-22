@@ -47,6 +47,9 @@ public class VentanaProceso extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 204, 0));
         jLabel2.setText("Parámetros");
 
+        setAlwaysOnTop(true);
+        setResizable(false);
+
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
         jLabel3.setFont(new java.awt.Font("Gadugi", 0, 36)); // NOI18N
