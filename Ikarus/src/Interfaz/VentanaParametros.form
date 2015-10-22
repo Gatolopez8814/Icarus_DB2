@@ -176,7 +176,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="cc" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Esquema:"/>
+            <Property name="text" type="java.lang.String" value="Database: "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTabla">
@@ -195,8 +195,10 @@
         <Component class="javax.swing.JTextField" name="txtTabla1">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="opaque" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTabla1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnListo">
           <Properties>

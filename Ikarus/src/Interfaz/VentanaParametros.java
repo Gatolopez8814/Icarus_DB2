@@ -64,14 +64,18 @@ public class VentanaParametros extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 204, 0));
-        jLabel4.setText("Esquema:");
+        jLabel4.setText("Database: ");
 
         jLabel5.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 204, 0));
         jLabel5.setText("Tabla:");
 
         txtTabla1.setEditable(false);
-        txtTabla1.setOpaque(false);
+        txtTabla1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTabla1ActionPerformed(evt);
+            }
+        });
 
         btnListo.setBackground(new java.awt.Color(255, 204, 0));
         btnListo.setText("¡Listo!");
@@ -151,6 +155,10 @@ public class VentanaParametros extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtTabla1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTabla1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTabla1ActionPerformed
 
     /**
      * @param args the command line arguments
