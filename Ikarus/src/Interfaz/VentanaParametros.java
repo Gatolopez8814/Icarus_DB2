@@ -5,6 +5,9 @@
  */
 package Interfaz;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+
 /**
  *
  * @author BRYAN
@@ -14,8 +17,17 @@ public class VentanaParametros extends javax.swing.JFrame {
     /**
      * Creates new form VentanaParametros
      */
-    public VentanaParametros() {
+    private VentanaParametros() {
         initComponents();
+        cambioIcono();
+        //vPrincipal= VentanaPrincipal.obtenerInstancia();
+    }
+    
+    public static VentanaParametros obtenerInstancia() {
+        if (instancia == null) {
+            instancia = new VentanaParametros();
+        }
+        return instancia;
     }
 
     /**
@@ -37,8 +49,14 @@ public class VentanaParametros extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtTabla = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtTabla1 = new javax.swing.JTextField();
+        txtDataBase = new javax.swing.JTextField();
         btnListo = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        txtNombreUsuario = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtcontraseña = new javax.swing.JPasswordField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Parámetros");
@@ -58,27 +76,76 @@ public class VentanaParametros extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 204, 0));
         jLabel1.setText("Ruta del archivo:");
 
+        txtRuta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRutaActionPerformed(evt);
+            }
+        });
+
         jLabel3.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 204, 0));
         jLabel3.setText("Separador:");
+
+        txtSeparador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSeparadorActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 204, 0));
         jLabel4.setText("Database: ");
 
+        txtTabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTablaActionPerformed(evt);
+            }
+        });
+
         jLabel5.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 204, 0));
         jLabel5.setText("Tabla:");
 
-        txtTabla1.setEditable(false);
-        txtTabla1.addActionListener(new java.awt.event.ActionListener() {
+        txtDataBase.setEditable(false);
+        txtDataBase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTabla1ActionPerformed(evt);
+                txtDataBaseActionPerformed(evt);
             }
         });
 
         btnListo.setBackground(new java.awt.Color(255, 204, 0));
         btnListo.setText("¡Listo!");
+
+        jLabel6.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 204, 0));
+        jLabel6.setText("Usuario:");
+
+        txtNombreUsuario.setEditable(false);
+        txtNombreUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreUsuarioActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 204, 0));
+        jLabel7.setText("Contraseña:");
+
+        txtcontraseña.setText("jPasswordField1");
+
+        jButton1.setText("volver");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Limpiar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
         panelPrincipal.setLayout(panelPrincipalLayout);
@@ -87,31 +154,46 @@ public class VentanaParametros extends javax.swing.JFrame {
             .addGroup(panelPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtRuta)
+                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(42, 42, 42)
+                        .addComponent(btnListo)
+                        .addGap(69, 69, 69)
+                        .addComponent(jButton2)
+                        .addGap(28, 28, 28))
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                         .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 120, Short.MAX_VALUE)
-                        .addComponent(icon))
-                    .addGroup(panelPrincipalLayout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTabla))
-                    .addGroup(panelPrincipalLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSeparador, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(panelPrincipalLayout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTabla1)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipalLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnListo)
-                .addGap(163, 163, 163))
+                            .addComponent(txtRuta)
+                            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtTabla))
+                            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtDataBase))
+                            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtSeparador, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel2)
+                                        .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                            .addComponent(jLabel6)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jLabel7))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtcontraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(icon)))
+                        .addContainerGap())))
         );
         panelPrincipalLayout.setVerticalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,14 +203,20 @@ public class VentanaParametros extends javax.swing.JFrame {
                     .addComponent(icon)
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(28, 28, 28)
+                        .addGap(3, 3, 3)
+                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(txtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7)
+                            .addComponent(txtcontraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtTabla1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDataBase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -138,7 +226,10 @@ public class VentanaParametros extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(txtSeparador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnListo)
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnListo)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addGap(13, 13, 13))
         );
 
@@ -156,57 +247,76 @@ public class VentanaParametros extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtTabla1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTabla1ActionPerformed
+    private void txtDataBaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDataBaseActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTabla1ActionPerformed
+    }//GEN-LAST:event_txtDataBaseActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaParametros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaParametros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaParametros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaParametros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void txtNombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreUsuarioActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentanaParametros().setVisible(true);
-            }
-        });
+    private void txtTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTablaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTablaActionPerformed
+
+    private void txtSeparadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSeparadorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSeparadorActionPerformed
+
+    private void txtRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRutaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRutaActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       limpiar();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //vPrincipal.mostrar();
+        ocultar();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cambioIcono() {//establece el icono de la aplicacion
+        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Interfaz/img/Icarus-Icon.png"));
+        setIconImage(icon);
+    }
+    private void limpiar(){
+        txtDataBase.setText("");
+        txtcontraseña.setText("");
+        txtNombreUsuario.setText("");
+        txtRuta.setText("");
+        txtSeparador.setText("");
+        txtTabla.setText("");        
+    }
+    public void mostrar() {
+        limpiar();
+        setVisible(true);        
+    }
+    
+    public void ocultar() {
+        setVisible(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnListo;
     private javax.swing.JLabel icon;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel panelPrincipal;
+    private javax.swing.JTextField txtDataBase;
+    private javax.swing.JTextField txtNombreUsuario;
     private javax.swing.JTextField txtRuta;
     private javax.swing.JTextField txtSeparador;
     private javax.swing.JTextField txtTabla;
-    private javax.swing.JTextField txtTabla1;
+    private javax.swing.JPasswordField txtcontraseña;
     // End of variables declaration//GEN-END:variables
+    private static VentanaParametros instancia = null;
+    //private VentanaPrincipal vPrincipal ;
 }

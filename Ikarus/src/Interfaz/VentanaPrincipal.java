@@ -5,17 +5,30 @@
  */
 package Interfaz;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+
 /**
  *
  * @author BRYAN
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-
+    
+    public static VentanaPrincipal obtenerInstancia() {
+        if (instancia == null) {
+            instancia = new VentanaPrincipal();
+        }
+        return instancia;
+    }
+    
     /**
      * Creates new form NewJFrame
      */
-    public VentanaPrincipal() {
+    private VentanaPrincipal() {
         initComponents();
+        cambioIcono();
+        vArchivo = VentanaArchivo.obtenerInstancia();
+        vParametros = VentanaParametros.obtenerInstancia();
     }
 
     /**
@@ -52,6 +65,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         btnArchivo.setBackground(new java.awt.Color(0, 0, 0));
         btnArchivo.setText("Archivo");
+        btnArchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnArchivoActionPerformed(evt);
+            }
+        });
 
         panelLogo.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -123,49 +141,31 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnParametrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnParametrosActionPerformed
-        // TODO add your handling code here:
+        vParametros.mostrar();
+        ocultar();
     }//GEN-LAST:event_btnParametrosActionPerformed
+
+    private void btnArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArchivoActionPerformed
+        vArchivo.mostrar();
+        ocultar();        
+    }//GEN-LAST:event_btnArchivoActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentanaPrincipal().setVisible(true);
-            }
-        });
+    
+    
+    private void cambioIcono() {//establece el icono de la aplicacion
+        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Interfaz/img/Icarus-Icon.png"));
+        setIconImage(icon);
+    }
+    
+    public void mostrar() {
+        setVisible(true);
+    }
+    
+    public void ocultar() {
+        setVisible(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -176,4 +176,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel panelLogo;
     private javax.swing.JPanel panelPrincipal;
     // End of variables declaration//GEN-END:variables
+    private static VentanaPrincipal instancia = null;
+    private VentanaArchivo vArchivo;
+    private VentanaParametros vParametros;
+    
 }

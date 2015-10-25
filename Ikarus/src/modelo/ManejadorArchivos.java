@@ -8,16 +8,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-public class ManejadorArchivosTxt {
-    
-    private static ManejadorArchivosTxt instancia = null;
+public class ManejadorArchivos {
 
-    private ManejadorArchivosTxt() {
+    private static ManejadorArchivos instancia = null;
+
+    private ManejadorArchivos() {
     }
 
-    public static ManejadorArchivosTxt obtenerInstancia() {
+    public static ManejadorArchivos obtenerInstancia() {
         if (instancia == null) {
-            instancia = new ManejadorArchivosTxt();
+            instancia = new ManejadorArchivos();
         }
         return instancia;
     }
@@ -37,7 +37,7 @@ public class ManejadorArchivosTxt {
                 lista.add(linea);
             }
         } catch (IOException e) {
-            System.err.println("Error" + e.getMessage());
+            System.err.println("Error al leer el archivo "+ nombreArchivo+ e.getMessage());
         }
         return lista;
     }//-------------------------------------------------------------------------
@@ -66,7 +66,7 @@ public class ManejadorArchivosTxt {
         FileWriter fw = null;
         PrintWriter pw = null;
         try {
-            fw = new FileWriter(nombreArchivo,true);
+            fw = new FileWriter(nombreArchivo, true);
             pw = new PrintWriter(fw);
             for (int i = 0; i < contenido.size(); i++) {
                 pw.println(contenido.get(i));
@@ -109,4 +109,17 @@ public class ManejadorArchivosTxt {
         }
     }//-------------------------------------------------------------------------
 
+    public ArrayList<String> leerCSV(String nombreArchivo) {//"blabla/blabla/nameOfTheFile.csv"
+        ArrayList<String> contenido = new ArrayList<>();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(nombreArchivo));
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                contenido.add(linea);
+            }
+        } catch (IOException e) {
+            System.err.println("Error" + e.getMessage());
+        }
+        return contenido;
+    }//-------------------------------------------------------------------------
 }//end class
