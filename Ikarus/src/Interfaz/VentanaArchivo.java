@@ -5,6 +5,9 @@
  */
 package Interfaz;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+
 /**
  *
  * @author BRYAN
@@ -14,8 +17,29 @@ public class VentanaArchivo extends javax.swing.JFrame {
     /**
      * Creates new form VentanaArchivo
      */
-    public VentanaArchivo() {
+    private VentanaArchivo() {
         initComponents();
+        cambioIcono();
+    }
+    
+    public static VentanaArchivo obtenerInstancia() {
+        if (instancia == null) {
+            instancia = new VentanaArchivo();
+        }
+        return instancia;
+    }
+    
+    private void cambioIcono() {//establece el icono de la aplicacion
+        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Interfaz/img/Icarus-Icon.png"));
+        setIconImage(icon);
+    }
+    
+    public void mostrar() {
+        setVisible(true);
+    }
+    
+    public void ocultar() {
+        setVisible(false);
     }
 
     /**
@@ -34,8 +58,6 @@ public class VentanaArchivo extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtRuta = new javax.swing.JTextField();
         btnListo = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        txtSeparador = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -70,10 +92,11 @@ public class VentanaArchivo extends javax.swing.JFrame {
 
         btnListo.setBackground(new java.awt.Color(255, 204, 0));
         btnListo.setText("¡Listo!");
-
-        jLabel3.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 204, 0));
-        jLabel3.setText("Separador:");
+        btnListo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -93,15 +116,8 @@ public class VentanaArchivo extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(txtRuta)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(172, 172, 172)
-                                .addComponent(btnListo))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtSeparador, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(172, 172, 172)
+                        .addComponent(btnListo)
                         .addGap(0, 161, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -116,11 +132,7 @@ public class VentanaArchivo extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(txtRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtSeparador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(btnListo)
                 .addContainerGap())
         );
@@ -139,50 +151,23 @@ public class VentanaArchivo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnListoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListoActionPerformed
+        controlador.Controlador.obtenerInstancia().cargarDesdeArchivo(txtRuta.getText());
+    }//GEN-LAST:event_btnListoActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaArchivo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaArchivo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaArchivo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaArchivo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentanaArchivo().setVisible(true);
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnListo;
     private javax.swing.JLabel icon;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel panelPrincipal;
     private javax.swing.JTextField txtRuta;
-    private javax.swing.JTextField txtSeparador;
     // End of variables declaration//GEN-END:variables
+    private static VentanaArchivo instancia = null;
 }

@@ -595,6 +595,7 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnArchivoActionPerformed"/>
           </Events>
+<<<<<<< HEAD
         </Component>
         <Component class="javax.swing.JLabel" name="logo">
           <Properties>
@@ -815,6 +816,8 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtSeparadorParametro">
+=======
+>>>>>>> a63cc5558d4e37469921afecb0466b079688c6da
         </Component>
         <Component class="javax.swing.JButton" name="btnListoParametro">
           <Properties>

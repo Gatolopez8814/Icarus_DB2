@@ -1,12 +1,38 @@
 
 package Interfaz;
 
+<<<<<<< HEAD
 
 public class VentanaPrincipal extends javax.swing.JFrame {
 
 
     public VentanaPrincipal() {
+=======
+import java.awt.Image;
+import java.awt.Toolkit;
+
+/**
+ *
+ * @author BRYAN
+ */
+public class VentanaPrincipal extends javax.swing.JFrame {
+    
+    public static VentanaPrincipal obtenerInstancia() {
+        if (instancia == null) {
+            instancia = new VentanaPrincipal();
+        }
+        return instancia;
+    }
+    
+    /**
+     * Creates new form NewJFrame
+     */
+    private VentanaPrincipal() {
+>>>>>>> a63cc5558d4e37469921afecb0466b079688c6da
         initComponents();
+        cambioIcono();
+        vArchivo = VentanaArchivo.obtenerInstancia();
+        vParametros = VentanaParametros.obtenerInstancia();
     }
 
     /**
@@ -326,6 +352,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 btnArchivoActionPerformed(evt);
             }
         });
+<<<<<<< HEAD
+=======
+
+        panelLogo.setBackground(new java.awt.Color(255, 255, 255));
+>>>>>>> a63cc5558d4e37469921afecb0466b079688c6da
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/img/Icarus-logo.png"))); // NOI18N
 
@@ -639,9 +670,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnParametrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnParametrosActionPerformed
-        // TODO add your handling code here:
+        vParametros.mostrar();
+        ocultar();
     }//GEN-LAST:event_btnParametrosActionPerformed
 
+<<<<<<< HEAD
     private void aboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_aboutActionPerformed
@@ -668,6 +701,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
 
 
+=======
+    private void btnArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArchivoActionPerformed
+        vArchivo.mostrar();
+        ocultar();        
+    }//GEN-LAST:event_btnArchivoActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    
+    
+    private void cambioIcono() {//establece el icono de la aplicacion
+        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Interfaz/img/Icarus-Icon.png"));
+        setIconImage(icon);
+    }
+    
+    public void mostrar() {
+        setVisible(true);
+    }
+    
+    public void ocultar() {
+        setVisible(false);
+    }
+>>>>>>> a63cc5558d4e37469921afecb0466b079688c6da
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem about;
@@ -732,4 +789,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField txtTabla;
     private javax.swing.JTextField usuario;
     // End of variables declaration//GEN-END:variables
+    private static VentanaPrincipal instancia = null;
+    private VentanaArchivo vArchivo;
+    private VentanaParametros vParametros;
+    
 }
