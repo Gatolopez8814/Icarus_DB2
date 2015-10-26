@@ -1,5 +1,6 @@
 package principal;
 
+import Interfaz.VentanaPrincipal;
 import java.util.ArrayList;
 import modelo.ConexionMySql;
 import javax.swing.JFrame;
@@ -12,6 +13,10 @@ import modelo.ManejadorArchivosTxt;
 public class Pruebas {
 
     public static void main(String[] args) {
+        
+        VentanaPrincipal princ = new VentanaPrincipal();
+        princ.setLocationRelativeTo(null);
+        princ.setVisible(true);
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             JFrame.setDefaultLookAndFeelDecorated(true);
