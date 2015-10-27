@@ -1,18 +1,9 @@
 package principal;
-
-import Interfaz.VentanaPrincipal;
-import java.util.ArrayList;
-import modelo.ConexionMySql;
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import modelo.ManejadorArchivosCSV;
-import modelo.ManejadorArchivosTxt;
+//import modelo.ManejadorArchivosTxt;
 
 public class Pruebas {
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         
         VentanaPrincipal princ = new VentanaPrincipal();
         princ.setLocationRelativeTo(null);
@@ -88,5 +79,5 @@ public class Pruebas {
             }
         }
         
-    }
+    }*/
 }

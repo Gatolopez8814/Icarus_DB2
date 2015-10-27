@@ -1,6 +1,6 @@
 package principal;
 
-import Interfaz.VentanaPrincipal;
+import Interfaz.PaginaPrincipal;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -25,8 +25,15 @@ public class Principal {
     }//-----------------------------------------------------------------END_MAIN
 
     private void mostrarInterfaz() {         
-        VentanaPrincipal ventana = VentanaPrincipal.obtenerInstancia();
-        ventana.mostrar();
+        /*VentanaPrincipal ventana = VentanaPrincipal.obtenerInstancia();
+        ventana.mostrar();*/
+        
+        PaginaPrincipal vent = new PaginaPrincipal();
+        vent.mostrarVentana();
+        
+        
+        
+        
     }//------------------------------------------------------END_mostrarInterfaz
 
     
