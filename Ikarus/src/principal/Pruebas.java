@@ -1,6 +1,10 @@
 package principal;
 //import modelo.ManejadorArchivosTxt;
 
+import java.util.ArrayList;
+import modelo.ConexionMySql;
+
+
 public class Pruebas {
 
     /*public static void main(String[] args) {
@@ -24,7 +28,7 @@ public class Pruebas {
                 pruebas.prueba4();
             }
         });
-    }
+    }*/
 
     private void iniciarPrueba() {
         // testConeccion();
@@ -45,6 +49,7 @@ public class Pruebas {
             System.out.println("ERROR la conexion No pudo realizarse ");
         }  
     }
+    /*
     private void prueba3(){
         ManejadorArchivosTxt fileManager = ManejadorArchivosTxt.obtenerInstancia();
         fileManager.CrearArchivo("test.txt");
@@ -61,6 +66,9 @@ public class Pruebas {
             System.out.println(x);
         }
     }
+    
+    
+    
     private void prueba4(){
         ManejadorArchivosCSV CSVManager = ManejadorArchivosCSV.obtenerInstancia();
         ArrayList<String> contenido = CSVManager.leer("clientes.csv");

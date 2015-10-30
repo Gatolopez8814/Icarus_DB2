@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import modelo.ConexionMySql;
 
 public class Principal {
 
@@ -25,11 +26,19 @@ public class Principal {
     }//-----------------------------------------------------------------END_MAIN
 
     private void mostrarInterfaz() {         
-        /*VentanaPrincipal ventana = VentanaPrincipal.obtenerInstancia();
-        ventana.mostrar();*/
         
         PaginaPrincipal vent = new PaginaPrincipal();
         vent.mostrarVentana();
+       
+        
+       ConexionMySql coneccion= ConexionMySql.obtenerInstancia();
+        boolean bandera= coneccion.noReturnStatementMySQL("root","root","","INSERT INTO `test`.`t1`(`num`)VALUES(1);");
+        if(bandera){
+            System.out.println("La conexion es posible");
+        }else{
+            System.out.println("ERROR la conexion No pudo realizarse ");
+        } 
+        
         
         
         

@@ -5,13 +5,15 @@
  */
 package Interfaz;
 
-import javax.swing.JOptionPane;
+import controlador.Controlador;
 
 /**
  *
  * @author BRYAN
  */
 public class PaginaPrincipal extends javax.swing.JFrame {
+    
+    Controlador controlador = new Controlador();
 
     /**
      * Creates new form Principal
@@ -22,7 +24,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         panelArchivo.setVisible(false);
         panelParametros.setVisible(false);
         //panelAbout.setVisible(false);
-        panelProgreso.setVisible(false);
+        panelProgreso.setVisible(true);
     }
 
     /**
@@ -34,22 +36,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        dialogAbout = new javax.swing.JDialog();
-        panelAbout = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        icon = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        dialogAyuda = new javax.swing.JDialog();
-        panelAyuda = new javax.swing.JPanel();
-        jLabel22 = new javax.swing.JLabel();
-        icon4 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
-        jFrame1 = new javax.swing.JFrame();
+        dialogProgreso = new javax.swing.JDialog();
         panelProgreso = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         barraProgreso = new javax.swing.JProgressBar();
@@ -65,6 +52,21 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         registroActual = new javax.swing.JTextField();
         icon3 = new javax.swing.JLabel();
         btnResultados = new javax.swing.JButton();
+        dialogAbout = new javax.swing.JDialog();
+        panelAbout = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        icon = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        dialogAyuda = new javax.swing.JDialog();
+        panelAyuda = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        icon4 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea4 = new javax.swing.JTextArea();
         panelPrincipal = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
         btnParametros = new javax.swing.JButton();
@@ -103,6 +105,159 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         about = new javax.swing.JMenuItem();
         ayuda = new javax.swing.JMenuItem();
         salir = new javax.swing.JMenuItem();
+
+        dialogProgreso.setAlwaysOnTop(true);
+        dialogProgreso.setPreferredSize(new java.awt.Dimension(473, 456));
+        dialogProgreso.setResizable(false);
+        dialogProgreso.setSize(new java.awt.Dimension(473, 435));
+
+        panelProgreso.setBackground(new java.awt.Color(0, 0, 0));
+
+        jLabel16.setFont(new java.awt.Font("Gadugi", 0, 36)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 204, 0));
+        jLabel16.setText("Proceso");
+
+        barraProgreso.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel17.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 204, 0));
+        jLabel17.setText("Registros Cargados:");
+
+        jLabel18.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 204, 0));
+        jLabel18.setText("Errores: ");
+
+        jLabel19.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 204, 0));
+        jLabel19.setText("Procesando: ");
+
+        jLabel20.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 204, 0));
+        jLabel20.setText("Tiempo Transcurrido:");
+
+        jLabel21.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 204, 0));
+        jLabel21.setText("Hora de Inicio: ");
+
+        cantCargados.setEditable(false);
+        cantCargados.setBackground(new java.awt.Color(0, 0, 0));
+        cantCargados.setForeground(new java.awt.Color(255, 255, 255));
+
+        cantErrores.setEditable(false);
+        cantErrores.setBackground(new java.awt.Color(0, 0, 0));
+        cantErrores.setForeground(new java.awt.Color(255, 255, 255));
+
+        horaInicio.setEditable(false);
+        horaInicio.setBackground(new java.awt.Color(0, 0, 0));
+        horaInicio.setForeground(new java.awt.Color(255, 255, 255));
+
+        tiempoTotal.setEditable(false);
+        tiempoTotal.setBackground(new java.awt.Color(0, 0, 0));
+        tiempoTotal.setForeground(new java.awt.Color(255, 255, 255));
+
+        registroActual.setEditable(false);
+        registroActual.setBackground(new java.awt.Color(0, 0, 0));
+        registroActual.setForeground(new java.awt.Color(255, 255, 255));
+
+        icon3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/img/Icarus-Icon2.png"))); // NOI18N
+
+        btnResultados.setBackground(new java.awt.Color(255, 255, 255));
+        btnResultados.setText("Ver Resultados");
+        btnResultados.setEnabled(false);
+
+        javax.swing.GroupLayout panelProgresoLayout = new javax.swing.GroupLayout(panelProgreso);
+        panelProgreso.setLayout(panelProgresoLayout);
+        panelProgresoLayout.setHorizontalGroup(
+            panelProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelProgresoLayout.createSequentialGroup()
+                .addGroup(panelProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelProgresoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(icon3))
+                    .addGroup(panelProgresoLayout.createSequentialGroup()
+                        .addGroup(panelProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelProgresoLayout.createSequentialGroup()
+                                .addGap(83, 83, 83)
+                                .addComponent(barraProgreso, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelProgresoLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel17)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cantCargados, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelProgresoLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cantErrores, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelProgresoLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel19)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(registroActual, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelProgresoLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel21)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(horaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelProgresoLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel20)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tiempoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(31, 31, 31)
+                                .addComponent(btnResultados, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 81, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        panelProgresoLayout.setVerticalGroup(
+            panelProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelProgresoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel16)
+                    .addComponent(icon3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(barraProgreso, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addGroup(panelProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(cantCargados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(cantErrores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(registroActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(horaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
+                .addGroup(panelProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(tiempoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnResultados))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout dialogProgresoLayout = new javax.swing.GroupLayout(dialogProgreso.getContentPane());
+        dialogProgreso.getContentPane().setLayout(dialogProgresoLayout);
+        dialogProgresoLayout.setHorizontalGroup(
+            dialogProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 473, Short.MAX_VALUE)
+            .addGroup(dialogProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(panelProgreso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        dialogProgresoLayout.setVerticalGroup(
+            dialogProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 456, Short.MAX_VALUE)
+            .addGroup(dialogProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(panelProgreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         dialogAbout.setAlwaysOnTop(true);
         dialogAbout.setMinimumSize(new java.awt.Dimension(400, 333));
@@ -265,152 +420,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             .addComponent(panelAyuda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jFrame1.setAlwaysOnTop(true);
-        jFrame1.setSize(new java.awt.Dimension(420, 332));
-
-        panelProgreso.setBackground(new java.awt.Color(0, 0, 0));
-
-        jLabel16.setFont(new java.awt.Font("Gadugi", 0, 36)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 204, 0));
-        jLabel16.setText("Proceso");
-
-        barraProgreso.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel17.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 204, 0));
-        jLabel17.setText("Registros Cargados:");
-
-        jLabel18.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(255, 204, 0));
-        jLabel18.setText("Errores: ");
-
-        jLabel19.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 204, 0));
-        jLabel19.setText("Procesando: ");
-
-        jLabel20.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(255, 204, 0));
-        jLabel20.setText("Tiempo Transcurrido:");
-
-        jLabel21.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(255, 204, 0));
-        jLabel21.setText("Hora de Inicio: ");
-
-        cantCargados.setBackground(new java.awt.Color(0, 0, 0));
-        cantCargados.setForeground(new java.awt.Color(255, 255, 255));
-
-        cantErrores.setBackground(new java.awt.Color(0, 0, 0));
-        cantErrores.setForeground(new java.awt.Color(255, 255, 255));
-
-        horaInicio.setBackground(new java.awt.Color(0, 0, 0));
-        horaInicio.setForeground(new java.awt.Color(255, 255, 255));
-
-        tiempoTotal.setBackground(new java.awt.Color(0, 0, 0));
-        tiempoTotal.setForeground(new java.awt.Color(255, 255, 255));
-
-        registroActual.setBackground(new java.awt.Color(0, 0, 0));
-        registroActual.setForeground(new java.awt.Color(255, 255, 255));
-
-        icon3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/img/Icarus-Icon2.png"))); // NOI18N
-
-        btnResultados.setBackground(new java.awt.Color(255, 255, 255));
-        btnResultados.setText("Ver Resultados");
-        btnResultados.setEnabled(false);
-
-        javax.swing.GroupLayout panelProgresoLayout = new javax.swing.GroupLayout(panelProgreso);
-        panelProgreso.setLayout(panelProgresoLayout);
-        panelProgresoLayout.setHorizontalGroup(
-            panelProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelProgresoLayout.createSequentialGroup()
-                .addGroup(panelProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelProgresoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel16)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(icon3))
-                    .addGroup(panelProgresoLayout.createSequentialGroup()
-                        .addGroup(panelProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelProgresoLayout.createSequentialGroup()
-                                .addGap(83, 83, 83)
-                                .addComponent(barraProgreso, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelProgresoLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel17)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cantCargados, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelProgresoLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel18)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cantErrores, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelProgresoLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel19)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(registroActual, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelProgresoLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel21)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(horaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelProgresoLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel20)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tiempoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(31, 31, 31)
-                                .addComponent(btnResultados, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 28, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        panelProgresoLayout.setVerticalGroup(
-            panelProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelProgresoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel16)
-                    .addComponent(icon3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(barraProgreso, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addGroup(panelProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(cantCargados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(cantErrores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19)
-                    .addComponent(registroActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel21)
-                    .addComponent(horaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addGroup(panelProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20)
-                    .addComponent(tiempoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnResultados))
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
-        jFrame1.getContentPane().setLayout(jFrame1Layout);
-        jFrame1Layout.setHorizontalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 420, Short.MAX_VALUE)
-            .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panelProgreso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jFrame1Layout.setVerticalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 332, Short.MAX_VALUE)
-            .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panelProgreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
         setResizable(false);
@@ -445,14 +454,12 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             .addGroup(panelPrincipalLayout.createSequentialGroup()
                 .addGap(73, 73, 73)
                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                         .addComponent(btnParametros)
                         .addGap(118, 118, 118)
                         .addComponent(btnArchivo))
-                    .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelPrincipalLayout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(114, Short.MAX_VALUE))
         );
         panelPrincipalLayout.setVerticalGroup(
@@ -466,7 +473,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnParametros)
                     .addComponent(btnArchivo))
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
 
         panelParametros.setBackground(new java.awt.Color(0, 0, 0));
@@ -507,6 +514,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
         btnListoParametro.setBackground(new java.awt.Color(255, 204, 0));
         btnListoParametro.setText("¡Listo!");
+        btnListoParametro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListoParametroActionPerformed(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 204, 0));
@@ -827,6 +839,15 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_ayudaActionPerformed
 
+    private void btnListoParametroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListoParametroActionPerformed
+        // TODO add your handling code here:
+        controlador.cargarDesdeParametros(usuario.getText(), password.getText(), txtRutaParametro.getText(), txtDatabase.getText(), txtTabla.getText(), txtSeparadorParametro.getText().charAt(0));
+        dialogProgreso.setLocationRelativeTo(null);
+        dialogProgreso.setVisible(true);
+        panelPrincipal.setVisible(true);
+        panelParametros.setVisible(false);
+    }//GEN-LAST:event_btnListoParametroActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -872,25 +893,25 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem about;
     private javax.swing.JMenuItem ayuda;
     private javax.swing.JMenuBar barraMenu;
-    private javax.swing.JProgressBar barraProgreso;
+    public javax.swing.JProgressBar barraProgreso;
     private javax.swing.JButton btnArchivo;
     private javax.swing.JButton btnAtrasArchivo;
     private javax.swing.JButton btnAtrasParametro;
-    private javax.swing.JButton btnListoArchivo;
-    private javax.swing.JButton btnListoParametro;
+    public javax.swing.JButton btnListoArchivo;
+    public javax.swing.JButton btnListoParametro;
     private javax.swing.JButton btnParametros;
-    private javax.swing.JButton btnResultados;
-    private javax.swing.JTextField cantCargados;
-    private javax.swing.JTextField cantErrores;
+    public javax.swing.JButton btnResultados;
+    public javax.swing.JTextField cantCargados;
+    public javax.swing.JTextField cantErrores;
     private javax.swing.JDialog dialogAbout;
     private javax.swing.JDialog dialogAyuda;
-    private javax.swing.JTextField horaInicio;
+    private javax.swing.JDialog dialogProgreso;
+    public javax.swing.JTextField horaInicio;
     private javax.swing.JLabel icon;
     private javax.swing.JLabel icon1;
     private javax.swing.JLabel icon2;
     private javax.swing.JLabel icon3;
     private javax.swing.JLabel icon4;
-    private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -927,16 +948,16 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel panelParametros;
     private javax.swing.JPanel panelPrincipal;
     private javax.swing.JPanel panelProgreso;
-    private javax.swing.JPasswordField password;
-    private javax.swing.JTextField registroActual;
+    public javax.swing.JPasswordField password;
+    public javax.swing.JTextField registroActual;
     private javax.swing.JMenuItem salir;
-    private javax.swing.JTextField tiempoTotal;
-    private javax.swing.JTextField txtDatabase;
-    private javax.swing.JTextField txtRutaArchivo;
-    private javax.swing.JTextField txtRutaParametro;
-    private javax.swing.JTextField txtSeparadorArchivo;
-    private javax.swing.JTextField txtSeparadorParametro;
-    private javax.swing.JTextField txtTabla;
-    private javax.swing.JTextField usuario;
+    public javax.swing.JTextField tiempoTotal;
+    public javax.swing.JTextField txtDatabase;
+    public javax.swing.JTextField txtRutaArchivo;
+    public javax.swing.JTextField txtRutaParametro;
+    public javax.swing.JTextField txtSeparadorArchivo;
+    public javax.swing.JTextField txtSeparadorParametro;
+    public javax.swing.JTextField txtTabla;
+    public javax.swing.JTextField usuario;
     // End of variables declaration//GEN-END:variables
 }
