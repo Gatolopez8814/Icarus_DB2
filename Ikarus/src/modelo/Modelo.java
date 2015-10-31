@@ -31,11 +31,14 @@ public class Modelo {
             if (inserts.isEmpty()) {
                 return false;
             }
+            int cont = 0;
             String statement;            
             for(String data:inserts){
+                
                 statement= "insert into "+ database+"."+table+" value(";
                 String[] value=data.split(separator+"");
                 for(int i=0;i<value.length;i++){
+                    
                     statement+="'"+value[i]+"'";
                     if(i!=value.length-1){
                         statement+=",";

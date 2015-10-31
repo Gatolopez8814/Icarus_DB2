@@ -6,6 +6,8 @@
 package Interfaz;
 
 import controlador.Controlador;
+import java.awt.Image;
+import java.awt.Toolkit;
 
 /**
  *
@@ -20,11 +22,19 @@ public class PaginaPrincipal extends javax.swing.JFrame {
      */
     public PaginaPrincipal() {
         initComponents();
+        cambioIcono();
         panelPrincipal.setVisible(true);
         panelArchivo.setVisible(false);
         panelParametros.setVisible(false);
         //panelAbout.setVisible(false);
         panelProgreso.setVisible(true);
+        panelParfile.setVisible(true);
+        
+    }
+    
+    private void cambioIcono() {//establece el icono de la aplicacion
+        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Interfaz/img/Icarus-Icon.png"));
+        setIconImage(icon);
     }
 
     /**
@@ -67,6 +77,12 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         icon4 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea4 = new javax.swing.JTextArea();
+        dialogParfile = new javax.swing.JDialog();
+        panelParfile = new javax.swing.JPanel();
+        jLabel23 = new javax.swing.JLabel();
+        icon5 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextArea5 = new javax.swing.JTextArea();
         panelPrincipal = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
         btnParametros = new javax.swing.JButton();
@@ -97,15 +113,16 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         icon2 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         txtRutaArchivo = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
-        txtSeparadorArchivo = new javax.swing.JTextField();
         btnListoArchivo = new javax.swing.JButton();
         barraMenu = new javax.swing.JMenuBar();
-        menuItemArchivo = new javax.swing.JMenu();
+        menuArchivo = new javax.swing.JMenu();
         about = new javax.swing.JMenuItem();
-        ayuda = new javax.swing.JMenuItem();
         salir = new javax.swing.JMenuItem();
+        menuInfo = new javax.swing.JMenu();
+        ayuda = new javax.swing.JMenuItem();
+        parfile = new javax.swing.JMenuItem();
 
+        dialogProgreso.setTitle("Progreso");
         dialogProgreso.setAlwaysOnTop(true);
         dialogProgreso.setPreferredSize(new java.awt.Dimension(473, 456));
         dialogProgreso.setResizable(false);
@@ -259,6 +276,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 .addComponent(panelProgreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        dialogAbout.setTitle("About");
         dialogAbout.setAlwaysOnTop(true);
         dialogAbout.setMinimumSize(new java.awt.Dimension(400, 333));
         dialogAbout.setResizable(false);
@@ -356,7 +374,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             .addComponent(panelAbout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        dialogAyuda.setTitle("Ayuda");
         dialogAyuda.setAlwaysOnTop(true);
+        dialogAyuda.setIconImage(null);
         dialogAyuda.setSize(new java.awt.Dimension(400, 333));
 
         panelAyuda.setBackground(new java.awt.Color(0, 0, 0));
@@ -418,6 +438,72 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         dialogAyudaLayout.setVerticalGroup(
             dialogAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelAyuda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        dialogParfile.setTitle("Parfile");
+        dialogParfile.setAlwaysOnTop(true);
+        dialogParfile.setMinimumSize(new java.awt.Dimension(400, 333));
+        dialogParfile.setSize(new java.awt.Dimension(400, 333));
+
+        panelParfile.setBackground(new java.awt.Color(0, 0, 0));
+
+        jLabel23.setFont(new java.awt.Font("Gadugi", 0, 36)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 204, 0));
+        jLabel23.setText("Sintaxis Parfile");
+
+        icon5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/img/Icarus-Icon2.png"))); // NOI18N
+
+        jScrollPane5.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane5.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        jTextArea5.setEditable(false);
+        jTextArea5.setBackground(new java.awt.Color(0, 0, 0));
+        jTextArea5.setColumns(20);
+        jTextArea5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jTextArea5.setForeground(new java.awt.Color(255, 255, 255));
+        jTextArea5.setRows(5);
+        jTextArea5.setText("username/nombreusuario: [nombre del usuario en la base de datos]\n\nuserpass/pass/contraseña/password: [Contraseña del usuario]\n\nfile/archivo: [archivo csv o txt donde se encuentra la información a cargar]\n\ndatabase/basedatos: [Base de datos o esquema donde se encuentra la tabla]\n\ntable/tabla: [Tabla donde se desea cargar la información]\n\nSeparador/separator: [Símbolo que indicará la separación de datos. (Ej: \",\")]");
+        jTextArea5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jTextArea5.setSelectedTextColor(new java.awt.Color(255, 204, 0));
+        jScrollPane5.setViewportView(jTextArea5);
+
+        javax.swing.GroupLayout panelParfileLayout = new javax.swing.GroupLayout(panelParfile);
+        panelParfile.setLayout(panelParfileLayout);
+        panelParfileLayout.setHorizontalGroup(
+            panelParfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelParfileLayout.createSequentialGroup()
+                .addGroup(panelParfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelParfileLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel23)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                        .addComponent(icon5))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelParfileLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        panelParfileLayout.setVerticalGroup(
+            panelParfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelParfileLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelParfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(icon5)
+                    .addComponent(jLabel23))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
+        );
+
+        javax.swing.GroupLayout dialogParfileLayout = new javax.swing.GroupLayout(dialogParfile.getContentPane());
+        dialogParfile.getContentPane().setLayout(dialogParfileLayout);
+        dialogParfileLayout.setHorizontalGroup(
+            dialogParfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelParfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        dialogParfileLayout.setVerticalGroup(
+            dialogParfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelParfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -653,12 +739,13 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(255, 204, 0));
         jLabel14.setText("Ruta del archivo de parámetros:");
 
-        jLabel15.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 204, 0));
-        jLabel15.setText("Separador:");
-
         btnListoArchivo.setBackground(new java.awt.Color(255, 204, 0));
         btnListoArchivo.setText("¡Listo!");
+        btnListoArchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListoArchivoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelArchivoLayout = new javax.swing.GroupLayout(panelArchivo);
         panelArchivo.setLayout(panelArchivoLayout);
@@ -688,10 +775,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jLabel13))
                         .addComponent(jLabel14)
-                        .addGroup(panelArchivoLayout.createSequentialGroup()
-                            .addComponent(jLabel15)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtSeparadorArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(txtRutaArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(290, Short.MAX_VALUE)))
         );
@@ -715,14 +798,10 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                     .addComponent(jLabel14)
                     .addGap(18, 18, 18)
                     .addComponent(txtRutaArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                    .addGroup(panelArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel15)
-                        .addComponent(txtSeparadorArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(110, 110, 110)))
+                    .addContainerGap(171, Short.MAX_VALUE)))
         );
 
-        menuItemArchivo.setText("Archivo");
+        menuArchivo.setText("Archivo");
 
         about.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/img/Icarus-Icon3.png"))); // NOI18N
         about.setText("About");
@@ -731,15 +810,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 aboutActionPerformed(evt);
             }
         });
-        menuItemArchivo.add(about);
-
-        ayuda.setText("Ayuda");
-        ayuda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ayudaActionPerformed(evt);
-            }
-        });
-        menuItemArchivo.add(ayuda);
+        menuArchivo.add(about);
 
         salir.setText("Salir");
         salir.addActionListener(new java.awt.event.ActionListener() {
@@ -747,9 +818,29 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 salirActionPerformed(evt);
             }
         });
-        menuItemArchivo.add(salir);
+        menuArchivo.add(salir);
 
-        barraMenu.add(menuItemArchivo);
+        barraMenu.add(menuArchivo);
+
+        menuInfo.setText("Info");
+
+        ayuda.setText("Ayuda");
+        ayuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ayudaActionPerformed(evt);
+            }
+        });
+        menuInfo.add(ayuda);
+
+        parfile.setText("Parfile");
+        parfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                parfileActionPerformed(evt);
+            }
+        });
+        menuInfo.add(parfile);
+
+        barraMenu.add(menuInfo);
 
         setJMenuBar(barraMenu);
 
@@ -841,12 +932,27 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
     private void btnListoParametroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListoParametroActionPerformed
         // TODO add your handling code here:
-        controlador.cargarDesdeParametros(usuario.getText(), password.getText(), txtRutaParametro.getText(), txtDatabase.getText(), txtTabla.getText(), txtSeparadorParametro.getText().charAt(0));
         dialogProgreso.setLocationRelativeTo(null);
         dialogProgreso.setVisible(true);
+        controlador.cargarDesdeParametros(usuario.getText(), password.getText(), txtRutaParametro.getText(), txtDatabase.getText(), txtTabla.getText(), txtSeparadorParametro.getText().charAt(0));
         panelPrincipal.setVisible(true);
         panelParametros.setVisible(false);
     }//GEN-LAST:event_btnListoParametroActionPerformed
+
+    private void parfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parfileActionPerformed
+        // TODO add your handling code here:
+        dialogParfile.setLocationRelativeTo(null);
+        dialogParfile.setVisible(true);
+    }//GEN-LAST:event_parfileActionPerformed
+
+    private void btnListoArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListoArchivoActionPerformed
+        // TODO add your handling code here:
+        dialogProgreso.setLocationRelativeTo(null);
+        dialogProgreso.setVisible(true);
+        controlador.cargarDesdeArchivo(txtRutaArchivo.getText());
+        panelPrincipal.setVisible(true);
+        panelArchivo.setVisible(false);
+    }//GEN-LAST:event_btnListoArchivoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -905,6 +1011,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     public javax.swing.JTextField cantErrores;
     private javax.swing.JDialog dialogAbout;
     private javax.swing.JDialog dialogAyuda;
+    private javax.swing.JDialog dialogParfile;
     private javax.swing.JDialog dialogProgreso;
     public javax.swing.JTextField horaInicio;
     private javax.swing.JLabel icon;
@@ -912,13 +1019,13 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel icon2;
     private javax.swing.JLabel icon3;
     private javax.swing.JLabel icon4;
+    private javax.swing.JLabel icon5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -927,6 +1034,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -937,17 +1045,22 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea4;
+    private javax.swing.JTextArea jTextArea5;
     private javax.swing.JLabel logo;
-    private javax.swing.JMenu menuItemArchivo;
+    private javax.swing.JMenu menuArchivo;
+    private javax.swing.JMenu menuInfo;
     private javax.swing.JPanel panelAbout;
     private javax.swing.JPanel panelArchivo;
     private javax.swing.JPanel panelAyuda;
     private javax.swing.JPanel panelParametros;
+    private javax.swing.JPanel panelParfile;
     private javax.swing.JPanel panelPrincipal;
     private javax.swing.JPanel panelProgreso;
+    private javax.swing.JMenuItem parfile;
     public javax.swing.JPasswordField password;
     public javax.swing.JTextField registroActual;
     private javax.swing.JMenuItem salir;
@@ -955,7 +1068,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     public javax.swing.JTextField txtDatabase;
     public javax.swing.JTextField txtRutaArchivo;
     public javax.swing.JTextField txtRutaParametro;
-    public javax.swing.JTextField txtSeparadorArchivo;
     public javax.swing.JTextField txtSeparadorParametro;
     public javax.swing.JTextField txtTabla;
     public javax.swing.JTextField usuario;

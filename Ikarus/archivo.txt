@@ -1,0 +1,7 @@
+username=root
+pass=root
+file=C:\Users\BRYAN\Desktop\ProyectoBases\Icarus_DB2\Ikarus\clientes.csv
+database=prueba
+table=carga
+separator=,
+%C:\Users\Gato\Desktop\parfile.txt
