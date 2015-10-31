@@ -7,6 +7,7 @@ public class Modelo {
     private static Modelo instancia = null;
     private ConexionMySql miConexion;
     private ManejadorArchivos miArchivos;
+    public ManejadorRegistros registros;
 
     public static Modelo obtenerInstancia() {
         if (instancia == null) {
@@ -31,7 +32,9 @@ public class Modelo {
             if (inserts.isEmpty()) {
                 return false;
             }
-            int cont = 0;
+            registros = new ManejadorRegistros();
+            System.out.println("contador? - " + registros.getContador());
+            // contador en 0
             String statement;            
             for(String data:inserts){
                 
@@ -45,7 +48,16 @@ public class Modelo {
                     }
                 }
                 statement+=");";
-                 miConexion.noReturnStatementMySQL(UserName, UserPass, database, statement);
+                //--------------------------------------- ACÁ LLEVA EL CONTADOR Y LOS ERRORES
+                 if(miConexion.noReturnStatementMySQL(UserName, UserPass, database, statement)){
+                     registros.setContador(registros.getContador()+1);
+                     System.out.println("contador? - " + registros.getContador());
+                }else{
+                     registros.setErrores(registros.getErrores()+1);
+                     System.out.println("ERROR DE REGISTRO! TOTAL= " + registros.getErrores());
+                     registros.setContador(registros.getContador()+1);
+                     System.out.println("contador? - " + registros.getContador());
+                 }
             }
              miConexion.noReturnStatementMySQL(UserName, UserPass, database, "commit;");
            
