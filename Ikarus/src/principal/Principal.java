@@ -19,8 +19,8 @@ public class Principal {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                Principal principal = new Principal();
-                principal.mostrarInterfaz();
+                PaginaPrincipal p = new PaginaPrincipal();
+                p.mostrarVentana();
             }
         });
     }//-----------------------------------------------------------------END_MAIN

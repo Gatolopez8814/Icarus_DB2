@@ -28,7 +28,7 @@ public class Controlador {
     }
     
      public boolean cargarDesdeArchivo(String URL_File){
-        return model.cargarDesdeArchivo(URL_File);
+        return model.cargaSimultanea(URL_File);
     }
 
    
