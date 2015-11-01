@@ -987,9 +987,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                PaginaPrincipal pp = new PaginaPrincipal();
-                pp.setLocationRelativeTo(null);
-                pp.setVisible(true);
+                //PaginaPrincipal pp = new PaginaPrincipal();
+                setLocationRelativeTo(null);
+                setVisible(true);
                 
             }
         });

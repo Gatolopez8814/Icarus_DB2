@@ -2,6 +2,7 @@ package modelo;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -36,8 +37,10 @@ public class ManejadorArchivos {
             while ((linea = br.readLine()) != null) {
                 lista.add(linea);
             }
+        } catch (FileNotFoundException e) {
+            System.err.println("Error " + e.getMessage());
         } catch (IOException e) {
-            System.err.println("Error al leer el archivo "+ nombreArchivo+ e.getMessage());
+            System.err.println("Error " + e.getMessage());
         }
         return lista;
     }//-------------------------------------------------------------------------
@@ -118,7 +121,7 @@ public class ManejadorArchivos {
                 contenido.add(linea);
             }
         } catch (IOException e) {
-            System.err.println("Error" + e.getMessage());
+            System.err.println("Error " + e.getMessage());
         }
         return contenido;
     }//-------------------------------------------------------------------------
