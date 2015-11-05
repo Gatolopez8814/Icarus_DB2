@@ -7,7 +7,8 @@ public class Modelo {
     private static Modelo instancia = null;
     private ConexionMySql miConexion;
     private ManejadorArchivos miArchivos;
-    public ManejadorRegistros registros;
+    public ManejadorRegistros registros = new ManejadorRegistros();//-----------------  no debo inicializarla acá.
+    
 
     public static Modelo obtenerInstancia() {
         if (instancia == null) {
@@ -16,7 +17,7 @@ public class Modelo {
         return instancia;
     }
 
-    private Modelo() {
+    public Modelo() {
         miConexion = ConexionMySql.obtenerInstancia();
         miArchivos = ManejadorArchivos.obtenerInstancia();
     }
@@ -32,8 +33,9 @@ public class Modelo {
             if (inserts.isEmpty()) {
                 return false;
             }
-            registros = new ManejadorRegistros();
             System.out.println("contador? - " + registros.getContador());
+            registros.setTotal(inserts.size());//---------------------------------ACA SETEA EL TOTAL 
+            System.out.println("total? - " + inserts.size());
             // contador en 0
             String statement;            
             for(String data:inserts){
@@ -48,16 +50,19 @@ public class Modelo {
                     }
                 }
                 statement+=");";
-                //--------------------------------------- ACÁ LLEVA EL CONTADOR Y LOS ERRORES
+                //--------------------------------------- ACÁ LLEVA LOS CORRECTOS Y LOS ERRORES
                  if(miConexion.noReturnStatementMySQL(UserName, UserPass, database, statement)){
-                     registros.setContador(registros.getContador()+1);
-                     System.out.println("contador? - " + registros.getContador());
+                     registros.setCorrectos(registros.getCorrectos()+1);
+                     System.out.println("correctos? - " + registros.getCorrectos());
                 }else{
                      registros.setErrores(registros.getErrores()+1);
                      System.out.println("ERROR DE REGISTRO! TOTAL= " + registros.getErrores());
                      registros.setContador(registros.getContador()+1);
                      System.out.println("contador? - " + registros.getContador());
                  }
+                 //--------------------------------------- ACÁ LLEVA EL CONTADOR 
+                 registros.setContador(registros.getContador()+1);
+                     System.out.println("contador? - " + registros.getContador());
             }
              miConexion.noReturnStatementMySQL(UserName, UserPass, database, "commit;");
            

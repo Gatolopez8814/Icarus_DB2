@@ -8,6 +8,7 @@ package Interfaz;
 import controlador.Controlador;
 import java.awt.Image;
 import java.awt.Toolkit;
+import modelo.Modelo;
 
 /**
  *
@@ -16,6 +17,8 @@ import java.awt.Toolkit;
 public class PaginaPrincipal extends javax.swing.JFrame {
     
     Controlador controlador = new Controlador();
+    Modelo modelo = new Modelo();
+    
 
     /**
      * Creates new form Principal
@@ -947,11 +950,14 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
     private void btnListoArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListoArchivoActionPerformed
         // TODO add your handling code here:
+        panelPrincipal.setVisible(true);
+        panelArchivo.setVisible(false);
         dialogProgreso.setLocationRelativeTo(null);
         dialogProgreso.setVisible(true);
         controlador.cargarDesdeArchivo(txtRutaArchivo.getText());
-        panelPrincipal.setVisible(true);
-        panelArchivo.setVisible(false);
+        cantCargados.setText(String.valueOf(modelo.registros.getCorrectos()));
+        cantErrores.setText(String.valueOf(modelo.registros.getErrores()));
+        registroActual.setText(String.valueOf(modelo.registros.getContador()));
     }//GEN-LAST:event_btnListoArchivoActionPerformed
 
     /**

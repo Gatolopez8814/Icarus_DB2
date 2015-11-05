@@ -15,16 +15,18 @@ public class ManejadorRegistros {
     
     private int contador;
     private int errores;
+    private int correctos;
     private int total;
     //private Time horaInicio;
     //private Time horaFinal;
     
     // tengo dudas de si esto va acá
 
-    public ManejadorRegistros(int contador, int errores, int total) {
+    public ManejadorRegistros(int contador, int errores, int total, int correctos) {
         this.contador = contador;
         this.errores = errores;
         this.total = total;
+        this.correctos = correctos;
     }
     
     
@@ -32,7 +34,17 @@ public class ManejadorRegistros {
         this.contador = 0;
         this.errores = 0;
         this.total = 0;
+        this.correctos =0;
     }
+
+    public int getCorrectos() {
+        return correctos;
+    }
+
+    public void setCorrectos(int correctos) {
+        this.correctos = correctos;
+    }
+    
 
     public int getContador() {
         return contador;
