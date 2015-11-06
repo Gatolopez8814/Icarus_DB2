@@ -1,5 +1,6 @@
 package modelo;
 
+import Interfaz.PaginaPrincipal;
 import java.util.ArrayList;
 
 public class Modelo {
@@ -7,7 +8,6 @@ public class Modelo {
     private static Modelo instancia = null;
     private ConexionMySql miConexion;
     private ManejadorArchivos miArchivos;
-    public ManejadorRegistros registros = new ManejadorRegistros();//-----------------  no debo inicializarla acá.
     private ManejadorReportes reportes;
 
     public static Modelo obtenerInstancia() {
@@ -39,14 +39,10 @@ public class Modelo {
                 reportes.imprimir();
                 return false;
             }
-            System.out.println("contador? - " + registros.getContador());
-            registros.setTotal(inserts.size());//---------------------------------ACA SETEA EL TOTAL 
-            System.out.println("total? - " + inserts.size());
-            // contador en 0
             String statement;
             for (String data : inserts) {
                 if (!data.isEmpty()) {
-                    System.out.println(data);
+                    //System.out.println(data);
                     statement = "insert into " + database + "." + table + " value(";
                     String[] value = data.split(separator + "");
                     for (int i = 0; i < value.length; i++) {
@@ -57,32 +53,22 @@ public class Modelo {
                     }
                     statement += ");";
                     //--------------------------------------- ACÁ LLEVA LOS CORRECTOS Y LOS ERRORES
-                    System.out.println("@= " + statement);
+                    //System.out.println("@= " + statement);
                     if (miConexion.noReturnStatementMySQL(UserName, UserPass, database, statement)) {
-                        registros.setCorrectos(registros.getCorrectos() + 1);
                         reportes.agregarEntradaLog("entrada ingresado correctamente");
-                        System.out.println("correctos? - " + registros.getCorrectos());
                     } else {
                         reportes.agregarEntradaLog("error ingresado entrada");
-                        registros.setErrores(registros.getErrores() + 1);
-                        System.out.println("ERROR DE REGISTRO! TOTAL= " + registros.getErrores());
-                        registros.setContador(registros.getContador() + 1);
-                        System.out.println("contador? - " + registros.getContador());
                     }
-                    //--------------------------------------- ACÁ LLEVA EL CONTADOR 
-                    registros.setContador(registros.getContador() + 1);
-
-                    System.out.println("contador? - " + registros.getContador());
                 }
 
             }
             //miConexion.noReturnStatementMySQL(UserName, UserPass, database, "commit;");
-
         } catch (Exception e) {
             reportes.agregarError(e.getMessage());
         }
         reportes.agregarEntradaLog(" carga terminada");
         reportes.imprimir();
+        PaginaPrincipal.obtenerInstancia().update(null);
         return true;
     }
 
@@ -94,15 +80,13 @@ public class Modelo {
         }
         String UserName = "", UserPass = "", dataBase = "", Table = "", URL_File = "";
         String sep;
-        char separator = ' ';
+        char separator = ',';
         try {
             ArrayList<String> param = miArchivos.leer(URL_par_File);
             for (String par : param) {
-                //System.out.println(par);
                 reportes.agregarEntradaLog(" Leyendo parfile");
                 reportes.agregarEntradaLog(" linea | " + par);
                 if (par.charAt(0) != '%') {
-                    System.out.println(par);
                     switch (par.split("=")[0]) {
                         case "username":
                         case "nombreusuario":
@@ -152,11 +136,10 @@ public class Modelo {
         } catch (Exception e) {
             reportes.agregarError(e.getMessage());
         }
-        /*if ("".equals(dataBase) || "".equals(Table) || validaSeparador(separator)
-         || "".equals(UserName) || "".equals(UserPass) || "".equals(URL_File)) {
-         return false;
-         }*/
-        //reportes.imprimir();      se llama en cargarDesdeParametros, si no tira en blanco
+        if (UserName.isEmpty() || UserPass.isEmpty() || URL_File.isEmpty()
+                || dataBase.isEmpty() || Table.isEmpty()) {
+            return false;
+        }
         return cargarDesdeParametros(UserName, UserPass, URL_File, dataBase, Table, separator);
     }
 

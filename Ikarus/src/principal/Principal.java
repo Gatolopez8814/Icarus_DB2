@@ -18,9 +18,33 @@ public class Principal {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                PaginaPrincipal pp = new PaginaPrincipal();
-                pp.mostrarVentana();
+                PaginaPrincipal principal = PaginaPrincipal.obtenerInstancia();
+                principal.mostrarVentana();
             }
         });
-    }
-}
+
+    }//-----------------------------------------------------------------END_MAIN
+
+    private void mostrarInterfaz() {         
+        
+        PaginaPrincipal vent =  PaginaPrincipal.obtenerInstancia();
+        vent.mostrarVentana();
+       /*
+        
+       ConexionMySql coneccion= ConexionMySql.obtenerInstancia();
+        boolean bandera= coneccion.noReturnStatementMySQL("root","root","","INSERT INTO `test`.`t1`(`num`)VALUES(1);");
+        if(bandera){
+            System.out.println("La conexion es posible");
+        }else{
+            System.out.println("ERROR la conexion No pudo realizarse ");
+        } 
+        */
+        
+        
+        
+        
+    }//------------------------------------------------------END_mostrarInterfaz
+
+    
+}//____________________________________________________________________END_MAIN
+

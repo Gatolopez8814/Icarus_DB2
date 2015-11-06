@@ -8,6 +8,8 @@ package Interfaz;
 import controlador.Controlador;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.util.Date;
+import javax.swing.JOptionPane;
 import modelo.Modelo;
 
 /**
@@ -15,15 +17,15 @@ import modelo.Modelo;
  * @author BRYAN
  */
 public class PaginaPrincipal extends javax.swing.JFrame {
-    
+
+    private static PaginaPrincipal instancia = null;
     Controlador controlador = new Controlador();
     Modelo modelo = new Modelo();
-    
 
     /**
      * Creates new form Principal
      */
-    public PaginaPrincipal() {
+    private PaginaPrincipal() {
         initComponents();
         cambioIcono();
         panelPrincipal.setVisible(true);
@@ -32,9 +34,15 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         //panelAbout.setVisible(false);
         panelProgreso.setVisible(true);
         panelParfile.setVisible(true);
-        
     }
-    
+
+    public static PaginaPrincipal obtenerInstancia() {
+        if (instancia == null) {
+            instancia = new PaginaPrincipal();
+        }
+        return instancia;
+    }
+
     private void cambioIcono() {//establece el icono de la aplicacion
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Interfaz/img/Icarus-Icon.png"));
         setIconImage(icon);
@@ -170,6 +178,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         horaInicio.setEditable(false);
         horaInicio.setBackground(new java.awt.Color(0, 0, 0));
         horaInicio.setForeground(new java.awt.Color(255, 255, 255));
+        horaInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                horaInicioActionPerformed(evt);
+            }
+        });
 
         tiempoTotal.setEditable(false);
         tiempoTotal.setBackground(new java.awt.Color(0, 0, 0));
@@ -178,6 +191,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         registroActual.setEditable(false);
         registroActual.setBackground(new java.awt.Color(0, 0, 0));
         registroActual.setForeground(new java.awt.Color(255, 255, 255));
+        registroActual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registroActualActionPerformed(evt);
+            }
+        });
 
         icon3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/img/Icarus-Icon2.png"))); // NOI18N
 
@@ -815,6 +833,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         });
         menuArchivo.add(about);
 
+        salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/img/Delete-2-icon.png"))); // NOI18N
         salir.setText("Salir");
         salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -827,6 +846,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
         menuInfo.setText("Info");
 
+        ayuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/img/support-icon.png"))); // NOI18N
         ayuda.setText("Ayuda");
         ayuda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -835,6 +855,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         });
         menuInfo.add(ayuda);
 
+        parfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/img/Text-align-left-icon.png"))); // NOI18N
         parfile.setText("Parfile");
         parfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -879,8 +900,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         dialogAbout.setLocationRelativeTo(null);
         dialogAbout.setVisible(true);
-        
-        
+
+
     }//GEN-LAST:event_aboutActionPerformed
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
@@ -894,7 +915,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         panelPrincipal.setVisible(false);
         panelArchivo.setVisible(false);
         panelParametros.setVisible(true);
-        
+
     }//GEN-LAST:event_btnParametrosActionPerformed
 
     private void btnArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArchivoActionPerformed
@@ -930,16 +951,18 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         dialogAyuda.setLocationRelativeTo(null);
         dialogAyuda.setVisible(true);
-        
+
     }//GEN-LAST:event_ayudaActionPerformed
 
     private void btnListoParametroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListoParametroActionPerformed
         // TODO add your handling code here:
-        dialogProgreso.setLocationRelativeTo(null);
-        dialogProgreso.setVisible(true);
+
         controlador.cargarDesdeParametros(usuario.getText(), password.getText(), txtRutaParametro.getText(), txtDatabase.getText(), txtTabla.getText(), txtSeparadorParametro.getText().charAt(0));
         panelPrincipal.setVisible(true);
         panelParametros.setVisible(false);
+
+        //dialogProgreso.setLocationRelativeTo(null);
+        //dialogProgreso.setVisible(true);        
     }//GEN-LAST:event_btnListoParametroActionPerformed
 
     private void parfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parfileActionPerformed
@@ -952,13 +975,21 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         panelPrincipal.setVisible(true);
         panelArchivo.setVisible(false);
-        dialogProgreso.setLocationRelativeTo(null);
-        dialogProgreso.setVisible(true);
+        //dialogProgreso.setLocationRelativeTo(null);
+        //dialogProgreso.setVisible(true);
         controlador.cargarDesdeArchivo(txtRutaArchivo.getText());
-        cantCargados.setText(String.valueOf(modelo.registros.getCorrectos()));
-        cantErrores.setText(String.valueOf(modelo.registros.getErrores()));
-        registroActual.setText(String.valueOf(modelo.registros.getContador()));
+        //cantCargados.setText(String.valueOf(modelo.registros.getCorrectos()));
+        //cantErrores.setText(String.valueOf(modelo.registros.getErrores()));
+        //registroActual.setText(String.valueOf(modelo.registros.getContador()));
     }//GEN-LAST:event_btnListoArchivoActionPerformed
+
+    private void horaInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_horaInicioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_horaInicioActionPerformed
+
+    private void registroActualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroActualActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_registroActualActionPerformed
 
     /**
      * @param args the command line arguments
@@ -993,13 +1024,14 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-//                PaginaPrincipal pp = new PaginaPrincipal();
-                setLocationRelativeTo(null);
-                setVisible(true);
-                
+
+                PaginaPrincipal pp = new PaginaPrincipal();
+                pp.setLocationRelativeTo(null);
+                pp.setVisible(true);   
             }
         });
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem about;

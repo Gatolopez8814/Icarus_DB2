@@ -26,7 +26,7 @@ public class ConexionMySql {
             con.close();
             return true;
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException e) {
-            System.err.println(e.toString());
+            //System.err.println(e.toString());
             ManejadorReportes.obtenerInstancia().agregarError(e.toString());
         }
         return false;
@@ -50,7 +50,7 @@ public class ConexionMySql {
             con.close();
             return true;
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException e) {
-            System.err.println(e.toString());
+            //System.err.println(e.toString());
             ManejadorReportes.obtenerInstancia().agregarError(e.toString());
         }
         return false;
