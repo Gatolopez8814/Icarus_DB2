@@ -11,8 +11,9 @@ import java.util.ArrayList;
 public class ManejadorArchivos {
 
     private static ManejadorArchivos instancia = null;
+    
 
-    private ManejadorArchivos() {
+    private ManejadorArchivos() {        
     }
 
     public static ManejadorArchivos obtenerInstancia() {
@@ -23,6 +24,7 @@ public class ManejadorArchivos {
     }
 
     public ArrayList<String> leer(String nombreArchivo) {//"src/vocabulario.txt"
+        ManejadorReportes reportes= ManejadorReportes.obtenerInstancia();
         File archivo = null;
         FileReader fr = null;
         BufferedReader br = null;
@@ -33,16 +35,18 @@ public class ManejadorArchivos {
             br = new BufferedReader(fr);
             String linea;
 
-            while ((linea = br.readLine()) != null) {
+            while ((linea = br.readLine()) != null) {                
                 lista.add(linea);
             }
         } catch (IOException e) {
+            reportes.agregarError("Error al leer el archivo "+ nombreArchivo+ e.getMessage());
             System.err.println("Error al leer el archivo "+ nombreArchivo+ e.getMessage());
         }
         return lista;
     }//-------------------------------------------------------------------------
 
     public void guardar(String nombreArchivo, ArrayList<String> contenido) {//"src/vocabulario.txt"
+        ManejadorReportes reportes= ManejadorReportes.obtenerInstancia();
         FileWriter fw = null;
         PrintWriter pw = null;
         try {
@@ -58,11 +62,13 @@ public class ManejadorArchivos {
                     fw.close();
                 }
             } catch (IOException e) {
+                reportes.agregarError("Error al leer el archivo "+ nombreArchivo+ e.getMessage());
             }
         }
     }//-------------------------------------------------------------------------
 
     public void guardarSinBorrar(String nombreArchivo, ArrayList<String> contenido) {//"src/vocabulario.txt"
+        ManejadorReportes reportes= ManejadorReportes.obtenerInstancia();
         FileWriter fw = null;
         PrintWriter pw = null;
         try {
@@ -78,16 +84,19 @@ public class ManejadorArchivos {
                     fw.close();
                 }
             } catch (IOException e) {
+                reportes.agregarError("Error al leer el archivo "+ nombreArchivo+ e.getMessage());
             }
         }
     }//-------------------------------------------------------------------------
 
     public void borrarContenidoArchivo(String nombreArchivo) {
+        ManejadorReportes reportes= ManejadorReportes.obtenerInstancia();
         File archivo = new File(nombreArchivo);
         if (archivo.exists() && archivo.delete()) {
             try {
                 archivo.createNewFile();
             } catch (IOException e) {
+                reportes.agregarError("Error en archivo "+ nombreArchivo+ e.getMessage());
             }
         }
     }//-------------------------------------------------------------------------
@@ -100,11 +109,13 @@ public class ManejadorArchivos {
     }//-------------------------------------------------------------------------
 
     public void CrearArchivo(String nombreArchivo) {//"src/archivos/" + nombreArchivo + ".txt"
+        ManejadorReportes reportes= ManejadorReportes.obtenerInstancia();
         File archivo = new File(nombreArchivo);
         if (!archivo.exists()) {
             try {
                 archivo.createNewFile();
             } catch (IOException e) {
+                reportes.agregarError("Error al crear el archivo "+ nombreArchivo+ e.getMessage());
             }
         }
     }//-------------------------------------------------------------------------

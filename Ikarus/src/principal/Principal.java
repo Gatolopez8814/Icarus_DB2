@@ -29,7 +29,7 @@ public class Principal {
         
         PaginaPrincipal vent = new PaginaPrincipal();
         vent.mostrarVentana();
-       
+       /*
         
        ConexionMySql coneccion= ConexionMySql.obtenerInstancia();
         boolean bandera= coneccion.noReturnStatementMySQL("root","root","","INSERT INTO `test`.`t1`(`num`)VALUES(1);");
@@ -38,7 +38,7 @@ public class Principal {
         }else{
             System.out.println("ERROR la conexion No pudo realizarse ");
         } 
-        
+        */
         
         
         
